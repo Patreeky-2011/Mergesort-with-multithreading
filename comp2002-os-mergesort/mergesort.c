@@ -40,17 +40,16 @@ void merge(int leftstart, int leftend, int rightstart, int rightend) {
     j++;
     k++;
   }
-  int m;
+
   // Step 4: Copy merged result from B back to A
-  for (m = leftstart; m <= rightend; m++) {
-    A[m] = B[m];
-  }
+  memcpy(A + leftstart, B + leftstart,
+         (rightend - leftstart + 1) * sizeof(int));
 }
 
 /* this function will be called by parallel_mergesort() as its base case. */
 void my_mergesort(int left, int right) {
   // Base case
-  if (left > right) {
+  if (left >= right) {
     return;
   }
 
@@ -71,7 +70,7 @@ void* parallel_mergesort(void* arg) {
 
   // Base case to standard merge-sort at or after cutoff.
   // Level should never exceed cutoff, and something has gone wrong if it does.
-  if (level == cutoff) {
+  if (level == cutoff || left >= right) {
     my_mergesort(left, right);
     return NULL;
   }
