@@ -147,6 +147,25 @@ int main(int argc, char **argv) {
 
 	// generate random input
 	generate_random_array(A, n, seed);
+	
+	/*
+	replace the above line with one of the following to test edge cases
+
+	// already sorted array
+	for (int i = 0; i < n; i++) {
+    	A[i] = i;
+	}
+
+	// reverse sorted array
+	for (int i = 0; i < n; i++) {
+    	A[i] = n - i;
+	}
+
+	// duplicate elements array
+	for (int i = 0; i < n; i++) {
+    	A[i] = i % 5;   // repeats 0, 1, 2, 3, 4
+	}
+	*/
 
 	double start_time;
 	double sorting_time;
