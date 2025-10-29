@@ -79,7 +79,7 @@ We have provided a bash script `testscript.sh` which automatically runs ./test-m
 sudo chmod +x testscript.sh
 ./testscript.sh
 ```
-
+---
 #### Running the algorithm on different types of arrays 
 By default, `test-mergesort.c` will run the algorithm on a randomly generated array using the `generate_random_array()` function:
 ```c
@@ -183,4 +183,5 @@ We also tested 3 edge cases (already sorted arrays, reverse sorted arrays, and a
 We used the following sources to understand how mergesort and parallel merge sort works, before doing our implementation:
 - https://www.youtube.com/watch?v=KF2j-9iSf4Q&t=372s
 - https://www.youtube.com/watch?v=3j0SWDX4AtU&t=519s
+
 
