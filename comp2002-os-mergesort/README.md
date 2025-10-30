@@ -12,7 +12,7 @@ Group name: Group 34
 ## Overview
 
 
-This project is an implementation of parallel merge sort in C, using the pthreads library. It follows a recursive divide-and-conquer approach where each time the array is split into subarrays, new threads are spawned to sort them concurrently. A user-specified cutoff level limits the recursion depth for thread creation, with level 0 running a serial merge sort, and higher levels enbling increasing parallelism. The test program generates a random array, sorts it, and reports the execution time.
+This project is an implementation of parallel merge sort in C, using the pthreads library. It follows a recursive divide-and-conquer approach where each time the array is split into subarray, new threads are spawned to sort them concurrently. A user-specified cutoff level limits the recursion depth for thread creation, with level 0 running a serial merge sort, and higher levels enabling increasing parallelism. The test program generates a random array, sorts it, and reports the execution time.
 
 ## Manifest
 
@@ -160,17 +160,21 @@ All three edge cases followed the same general performance pattern as the defaul
 ## Known Bugs
 
 List known bugs that you weren't able to fix (or ran out of time to fix).
-Our program currently does not contain any known bugs.
+Our program currently does not contain any known bugs that we are aware of.
 
 ## Reflection and Self Assessment
 
-Discuss the issues you encountered during development and testing. What
-problems did you have? What did you have to research and learn on your own?
-What kinds of errors did you get? How did you fix them?
+#### Challenges during development
+During the software development phase, our only challenges were a lack of c89 compliance, understanding mergesort nuances, and a logic synchronisation error between functions. When we required more knowledge of mergesort during development, we watched youtube videos (attached in sources) and used the resources on the assingment description page to gain a more comprehensive understanding. 
 
-What parts of the project did you find challenging? Is there anything that
-finally "clicked" for you in the process of working on this project? How well
-did the development and testing process go for you?
+The code was intially non-compliant with c89, resulting in errors such as:
+
+ - Declarations in for-loops are not allowed (initial iplementation had for loops, no longer)
+ - Mixed declarations and statements are not allowed.
+
+I was new to c89 standards so I had to research online to find more information. The errors were fixed by declarating variables before the for loop and moving all variable declarations to the top of their blocks (i.e. int m to the top of the merge() function). Eventually we replaced the for loops with while loops.
+
+The other main issue we faced was the logic difference in the implementation of merge functions. One team member's merge() logic was inclusive of elements, whereas the other team member's parallel_mergesort() was exclusive. As a result, both functions were not compatiable. After reviewing the assignment description, both team members decided to use the inclusive logic. 
 
 #### Challenges during testing 
 After fixing the initial errors mentioned earlier, the testing process became fairly straightforward since we were able to automate it using a bash script (`testscript.sh`). Testing both performance and correctness was simple; we ran the script against the default executable generated from `test-mergesort.c`, and were able to match the pattern given in the _Expected Results_ section of the assignment brief, therefore deciding that no more modifications to the algorithm were necessary.
@@ -184,4 +188,6 @@ We used the following sources to understand how mergesort and parallel merge sor
 - https://www.youtube.com/watch?v=KF2j-9iSf4Q&t=372s
 - https://www.youtube.com/watch?v=3j0SWDX4AtU&t=519s
 
+This is the c89 standards official pdf:
+- https://web.archive.org/web/20200909074736if_/https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf
 
