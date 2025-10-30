@@ -176,7 +176,7 @@ The code was intially non-compliant with c89, resulting in errors such as:
 
 I was new to c89 standards so I had to research online to find more information. The errors were fixed by declarating variables before the for loop and moving all variable declarations to the top of their blocks (i.e. int m to the top of the merge() function). Eventually we replaced the for loops with while loops.
 
-The other main issue we faced was the logic difference in the implementation of merge functions. One team member's merge() logic was inclusive of elements, whereas the other team member's parallel_mergesort() was exclusive. As a result, both functions were not compatiable. After reviewing the assignment description, both team members decided to use the inclusive logic. 
+The other main issue we faced was in the interpretation of function logic and communication of this between group members. The input parameters for `merge` were ambiguous as to whether the upper bounds were inclusive or exclusive. As a result of this, the bounds were treated as inclusive in the standard merge sort function, and exclusive in the parallel merge sort function. This inconsistency was addressed and both functions now use treat the bounds as inclusive. 
 
 #### Challenges during testing 
 After fixing the initial errors mentioned earlier, the testing process became fairly straightforward since we were able to automate it using a bash script (`testscript.sh`). Testing both performance and correctness was simple; we ran the script against the default executable generated from `test-mergesort.c`, and were able to match the pattern given in the _Expected Results_ section of the assignment brief, therefore deciding that no more modifications to the algorithm were necessary.
