@@ -165,7 +165,9 @@ Our program currently does not contain any known bugs that we are aware of.
 ## Reflection and Self Assessment
 
 #### Challenges during development
-During the software development phase, our only challenges were a lack of c89 compliance, understanding mergesort nuances, and a logic synchronisation error between functions. When we required more knowledge of mergesort during development, we watched youtube videos (attached in sources) and used the resources on the assingment description page to gain a more comprehensive understanding. 
+During the software development phase, our only challenges were a lack of c89 compliance, understanding mergesort nuances, and a logic synchronisation error between functions. When we required more knowledge of mergesort during development, we watched youtube videos (attached in sources) and used the resources on the assignment description page to gain a more comprehensive understanding. 
+
+During this process, one piece of information that clicked with me was realising how the sequential mergesort algorithm recursively sorts the left subarray first and then the right subarray. By visualising the recursion tree, I had enough information to accurately code the mergesort() and merge() algorithms.
 
 The code was intially non-compliant with c89, resulting in errors such as:
 
